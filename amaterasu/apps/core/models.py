@@ -50,7 +50,7 @@ class Alias(models.Model):
 class Domain(models.Model):
     name = models.CharField(max_length=100)
     transport = models.CharField(max_length=50, default='virtual')
-    #active = models.BooleanField(default=True)
+    active = models.BooleanField(default=True)
     
     def __unicode__(self):
         return "%s" % self.name
