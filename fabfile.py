@@ -30,8 +30,9 @@ def collectstatic():
             run('python manage.py collectstatic --noinput')
         
 def run_migrations():
-    with cd(REMOTE_BASE_PATH):
-        run('./manage.py migrate')
+    with cd(REMOTE_BASE_PATH + 'amaterasu/'):
+        with prefix('source ' + REMOTE_BASE_PATH + 'venv/bin/activate'):
+            run('python manage.py migrate')
         
 def deploy():
     copy_files()
