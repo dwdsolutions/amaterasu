@@ -12,7 +12,7 @@ class Mailbox(models.Model):
     password = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     maildir = models.CharField(max_length=150)
-    quota = models.DecimalField(decimal_places=2, default=0)
+    quota = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     local_part = models.CharField(max_length=100)
     domain = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
