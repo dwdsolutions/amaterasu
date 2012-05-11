@@ -21,11 +21,13 @@ def copy_files():
         
 def install_deps():
     with cd(REMOTE_BASE_PATH):
-        run('pip install -r requirements/requirements.txt')
+        with prefix('source ' + REMOTE_BASE_PATH + 'venv/bin/activate'):
+            run('pip install -r requirements/requirements.txt')
         
 def collectstatic():
-    with cd(REMOTE_BASE_PATH):
-        run('./manage.py collectstatic --noinput')
+    with cd(REMOTE_BASE_PATH + 'amaterasu/'):
+        with prefix('source ' + REMOTE_BASE_PATH + 'venv/bin/activate'):
+            run('python manage.py collectstatic --noinput')
         
 def run_migrations():
     with cd(REMOTE_BASE_PATH):
