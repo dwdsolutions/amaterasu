@@ -63,3 +63,36 @@ def add_alias_and_transport(sender, **kwargs):
             alias.save()
             domain = Domain(name=mailbox.domain)
             domain.save()
+
+class PdnsDomains(models.Model):
+    name = models.CharField(max_length=250)
+    master = models.CharField(max_length=128, blank=True, null=True)
+    last_check = models.IntegerField(blank=True, null=True)
+    type = models.CharField(max_length=6)
+    notified_serial = models.IntegerField(blank=True, null=True)
+    account = models.CharField(max_length=40, blank=True, null=True)
+    
+    def __unicode__(self):
+        return "%s" % self.name
+        
+class Records(models.Model):
+    domain = models.ForeignKey(PdnsDomains, blank=True, null=True)
+    name = models.CharField(max_length=255,  blank=True, null=True)
+    type = models.CharField(max_length=10, blank=True, null=True)
+    content = models.CharField(max_length=65535, blank=True, null=True)
+    ttl = models.IntegerField(blank=True, null=True)
+    prio = models.IntegerField(blank=True, null=True)
+    change_date = models.IntegerField(blank=True, null=True)
+    #ordername = models.CharField(max_length=255)
+    #auth = models.BooleanField()
+    
+    def __unicode__(self):
+        return "%s" % self.name
+        
+    class Meta:
+        verbose_name_plural = 'Records'
+        
+class Supermasters(models.Model):
+    ip = models.IPAddressField()
+    nameserver = models.CharField(max_length=255)
+    account = models.CharField(max_length=40)
