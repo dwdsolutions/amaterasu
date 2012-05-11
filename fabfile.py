@@ -2,7 +2,7 @@ from fabric.api import *
 from fabric.colors import green, red
 from pprint import pprint
 
-REMOTE_BASE_PATH = '/srv/www/'
+REMOTE_BASE_PATH = '/var/www/'
 
 env.hosts = ['64.22.109.92']
 env.user = 'root'
