@@ -9,6 +9,7 @@ never was very colaborative and actually have an slow development process.
 The main core features that I want implement in amaterasu are:
 
   - DNS Manage
+  - Email Manage
   - Celery tasks to replace cron jobs
   - Capacity to decide what services you want enable per client (web site, email, ftp, etc)
   - Quotas
