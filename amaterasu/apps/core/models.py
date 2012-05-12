@@ -110,7 +110,7 @@ class Records(models.Model):
         ('TXT', 'TXT'),
         ('PTR', 'PTR'),
         ('A', 'A'),
-        ('AAAA', 'AAAA')
+        ('AAAA', 'AAAA'),
         ('CNAME', 'CNAME'),
     )
     
