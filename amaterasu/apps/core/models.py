@@ -62,7 +62,7 @@ def add_alias_and_transport(sender, **kwargs):
         if mailbox:
             alias = Alias(address=mailbox.username, goto=mailbox.username, domain=mailbox.domain)
             alias.save()
-            domain = Domain.objects.get_or_create(name=mailbox.domain)
+            domain = Domain.objects.get_or_create(name=mailbox.domain)[0]
             if domain.transport != 'dovecot':
                 domain.transport = 'dovecot'
                 domain.save()
