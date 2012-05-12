@@ -76,6 +76,9 @@ class PdnsDomains(models.Model):
     def __unicode__(self):
         return "%s" % self.name
         
+    class Meta:
+        verbose_name_plural = 'PDNS Domains'
+        
 class Records(models.Model):
     domain = models.ForeignKey(PdnsDomains, blank=True, null=True)
     name = models.CharField(max_length=255,  blank=True, null=True)

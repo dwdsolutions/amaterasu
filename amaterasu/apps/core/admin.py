@@ -8,9 +8,12 @@ class MailboxAdmin(admin.ModelAdmin):
     
 class AliasAdmin(admin.ModelAdmin):
     list_display = ('address', 'goto')
+    
+class RecordsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'content')
 
 admin.site.register(Mailbox, MailboxAdmin)
 admin.site.register(Alias, AliasAdmin)
 admin.site.register(Domain)
 admin.site.register(PdnsDomains)
-admin.site.register(Records)
+admin.site.register(Records, RecordsAdmin)
