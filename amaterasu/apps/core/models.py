@@ -11,6 +11,9 @@ from passlib.hash import md5_crypt
 
 
 class Mailbox(models.Model):
+    """
+    Class to represent a mailbox
+    """
     username = models.EmailField(max_length=150)
     password = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
@@ -40,6 +43,9 @@ class Mailbox(models.Model):
         verbose_name_plural = 'Mailboxes'
         
 class Alias(models.Model):
+    """
+    Class to represent an email alias
+    """
     address = models.EmailField(max_length=150)
     goto = models.EmailField(max_length=150)
     domain = models.CharField(max_length=100)
@@ -54,6 +60,9 @@ class Alias(models.Model):
         verbose_name_plural = 'Aliases'
         
 class Domain(models.Model):
+    """
+    Class to represent an email domain
+    """
     name = models.CharField(max_length=100)
     transport = models.CharField(max_length=50, default='virtual')
     active = models.BooleanField(default=True)
@@ -74,6 +83,9 @@ def add_alias_and_transport(sender, **kwargs):
                 domain.save()
 
 class PdnsDomains(models.Model):
+    """
+    Class to represent a DNS domain
+    """
     name = models.CharField(max_length=250)
     master = models.CharField(max_length=128, blank=True, null=True)
     last_check = models.IntegerField(blank=True, null=True)
@@ -88,9 +100,23 @@ class PdnsDomains(models.Model):
         verbose_name_plural = 'PDNS Domains'
         
 class Records(models.Model):
+    """
+    Class to store dns records from one domain in PDNS Domains
+    """
+    TYPES_OF_RECORDS = (
+        ('SOA', 'SOA'),
+        ('NS', 'NS'),
+        ('MX', 'MX'),
+        ('TXT', 'TXT'),
+        ('PTR', 'PTR'),
+        ('A', 'A'),
+        ('AAAA', 'AAAA')
+        ('CNAME', 'CNAME'),
+    )
+    
     domain = models.ForeignKey(PdnsDomains, blank=True, null=True)
     name = models.CharField(max_length=255,  blank=True, null=True)
-    type = models.CharField(max_length=10, blank=True, null=True)
+    type = models.CharField(choices=TYPES_OF_RECORDS, max_length=10, blank=True, null=True)
     content = models.CharField(max_length=65535, blank=True, null=True)
     ttl = models.IntegerField(blank=True, null=True)
     prio = models.IntegerField(blank=True, null=True)
