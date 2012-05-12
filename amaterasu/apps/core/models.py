@@ -31,7 +31,7 @@ class Mailbox(models.Model):
         
         res = re.search("$1$", self.password)
         if not res:
-            self.password = md5_crypt(self.password)
+            self.password = md5_crypt.encrypt(self.password)
     
     def __unicode__(self):
         return "%s" % self.username
