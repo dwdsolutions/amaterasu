@@ -13,6 +13,7 @@ class RecordsAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'content')
     list_filter = ('type',)
     search_fields = ['name', 'type', 'content']
+    list_per_page = 25
 
 admin.site.register(Mailbox, MailboxAdmin)
 admin.site.register(Alias, AliasAdmin)
