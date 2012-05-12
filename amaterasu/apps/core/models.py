@@ -63,8 +63,9 @@ def add_alias_and_transport(sender, **kwargs):
             alias = Alias(address=mailbox.username, goto=mailbox.username, domain=mailbox.domain)
             alias.save()
             domain = Domain.objects.get_or_create(name=mailbox.domain)
-            domain.transport = 'dovecot'
-            domain.save()
+            if domain.transport != 'dovecot':
+                domain.transport = 'dovecot'
+                domain.save()
 
 class PdnsDomains(models.Model):
     name = models.CharField(max_length=250)
