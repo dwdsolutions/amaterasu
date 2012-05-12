@@ -1,4 +1,5 @@
 import datetime
+import re
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext as _
@@ -6,6 +7,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.hashers import make_password
+from passlib.hash import md5_crypt
 
 
 class Mailbox(models.Model):
@@ -21,11 +23,15 @@ class Mailbox(models.Model):
     active = models.BooleanField(default=True)
     
     def clean(self):
+        res = ''
         mailparts = self.username.split('@')
         self.local_part = mailparts[0]
         self.domain = mailparts[1]
         self.maildir = self.username + '/'
-        self.password = make_password(password=self.password, hasher='bcrypt')
+        
+        res = re.search("$1$", self.password)
+        if not res:
+            self.password = md5_crypt(self.password)
     
     def __unicode__(self):
         return "%s" % self.username
