@@ -25,7 +25,7 @@ class Mailbox(models.Model):
         self.local_part = mailparts[0]
         self.domain = mailparts[1]
         self.maildir = self.username + '/'
-        self.password = make_password(password=self.password, hasher='md5')
+        self.password = make_password(password=self.password, hasher='bcrypt')
     
     def __unicode__(self):
         return "%s" % self.username
