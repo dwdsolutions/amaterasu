@@ -11,6 +11,8 @@ class AliasAdmin(admin.ModelAdmin):
     
 class RecordsAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'content')
+    list_filter = ('type')
+    search_fields = ['name', 'type', 'content']
 
 admin.site.register(Mailbox, MailboxAdmin)
 admin.site.register(Alias, AliasAdmin)
