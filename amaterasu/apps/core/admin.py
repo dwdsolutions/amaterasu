@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Mailbox, Alias, Domain
+from models import Mailbox, Alias, Domain, PdnsDomains, Records
 
 class MailboxAdmin(admin.ModelAdmin):
     list_display = ('username', 'name', 'created', 'modified', 'active')
@@ -12,3 +12,5 @@ class AliasAdmin(admin.ModelAdmin):
 admin.site.register(Mailbox, MailboxAdmin)
 admin.site.register(Alias, AliasAdmin)
 admin.site.register(Domain)
+admin.site.register(PdnsDomains)
+admin.site.register(Records)
