@@ -17,7 +17,9 @@ def copy_files():
     put('/tmp/amaterasu.zip', '/tmp/')
     
     with cd(REMOTE_BASE_PATH):
-        run('unzip -o -f /tmp/amaterasu.zip')
+        run('cp amaterasu/amaterasu/settings.py amaterasu/amaterasu/settings_prod.py')
+        run('unzip -o /tmp/amaterasu.zip')
+        run('cp amaterasu/amaterasu/settings_prod.py amaterasu/amaterasu/settings.py')
         
 def install_deps():
     with cd(REMOTE_BASE_PATH):
