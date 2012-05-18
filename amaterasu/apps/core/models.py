@@ -134,3 +134,30 @@ class Supermasters(models.Model):
     ip = models.IPAddressField()
     nameserver = models.CharField(max_length=255)
     account = models.CharField(max_length=40)
+    
+# Class related to plans and clients
+class Language(models.Model):
+    """
+    Class to represent the languages support for every client
+    """
+    name = models.CharField(max_length=100)
+    
+    def __unicode__(self):
+        return "%s" % self.name
+        
+    class Meta:
+        ordering = ['id']
+
+class Plan(models.Model):
+    name = models.CharField(max_length=150)
+    bandwidth = models.DecimalField(_("Bandwidth MB"), max_digits=10, decimal_places=2, default=5096)
+    disk_space = models.DecimalField(_("Disk Space MB"), max_digits=10, decimal_places=2, default=300)
+    email_accounts = models.IntegerField(default=10)
+    ftp_accounts = models.IntegerField(default=5)
+    languages = models.ManyToManyField(Language)
+    db_mysql = models.IntegerField()
+    db_postgres = models.IntegerField()
+    
+    def __unicode__(self):
+        return "%s" % self.name
+    
