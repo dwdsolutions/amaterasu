@@ -22,7 +22,7 @@ def copy_files():
         run('cp amaterasu/amaterasu/settings_prod.py amaterasu/amaterasu/settings.py')
         
 def install_deps():
-    with cd(REMOTE_BASE_PATH):
+    with cd(REMOTE_BASE_PATH + 'amaterasu/'):
         with prefix('source ' + REMOTE_BASE_PATH + 'venv/bin/activate'):
             run('pip install -r requirements/requirements.txt')
         
