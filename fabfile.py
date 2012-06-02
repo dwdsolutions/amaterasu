@@ -35,9 +35,14 @@ def run_migrations():
     with cd(REMOTE_BASE_PATH + 'amaterasu/'):
         with prefix('source ' + REMOTE_BASE_PATH + 'venv/bin/activate'):
             run('python manage.py migrate')
+            
+def restart_supervisord():
+    run('supervisorctl restart amaterasu')
         
 def deploy():
     copy_files()
+    install_deps()
     collectstatic()
+    restart_supervisord()
     print(green('Deployed successfully', bold=True))
 
