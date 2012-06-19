@@ -81,6 +81,8 @@ def add_alias_and_transport(sender, **kwargs):
             if domain.transport != 'dovecot':
                 domain.transport = 'dovecot'
                 domain.save()
+            else:
+                domain.save()
 
 class PdnsDomains(models.Model):
     """
@@ -163,3 +165,23 @@ class Plan(models.Model):
     def __unicode__(self):
         return "%s" % self.name
     
+    
+class ClientProfile(models.Model):
+    user = models.OneToOneField(User)
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    phone = models.CharField(max_length=15)
+    email = models.EmailField()
+    
+    class Meta:
+        ordering = ['user']
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
+        
+    def __unicode__(self):
+        return '{0}'.format(self.get_full_name())
+        
+    def get_full_name(self):
+        return '{0} {1}'.format(self.firt_name, self.last_name)
+        
+    get_full_name.verbose_name = "Full Name"
