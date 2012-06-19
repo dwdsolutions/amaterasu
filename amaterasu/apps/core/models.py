@@ -64,7 +64,7 @@ class Domain(models.Model):
     Class to represent an email domain
     """
     name = models.CharField(max_length=100)
-    transport = models.CharField(max_length=50, default='virtual')
+    transport = models.CharField(max_length=50, default='dovecot')
     active = models.BooleanField(default=True)
     
     def __unicode__(self):
