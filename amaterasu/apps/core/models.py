@@ -25,6 +25,12 @@ class Mailbox(models.Model):
     modified = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
     
+    class Meta:
+        verbose_name_plural = 'Mailboxes'
+        
+    def __unicode__(self):
+        return '{}'.format(self.username)
+    
     def clean(self):
         res = ''
         mailparts = self.username.split('@')
@@ -35,12 +41,6 @@ class Mailbox(models.Model):
         res = re.search("$1$", self.password)
         if not res:
             self.password = md5_crypt.encrypt(self.password)
-    
-    def __unicode__(self):
-        return "%s" % self.username
-        
-    class Meta:
-        verbose_name_plural = 'Mailboxes'
         
 class Alias(models.Model):
     """
@@ -53,11 +53,11 @@ class Alias(models.Model):
     modified = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
     
-    def __unicode__(self):
-        return "%s" % self.address
-        
     class Meta:
         verbose_name_plural = 'Aliases'
+    
+    def __unicode__(self):
+        return "%s" % self.address
         
 class Domain(models.Model):
     """
@@ -93,11 +93,11 @@ class PdnsDomains(models.Model):
     notified_serial = models.IntegerField(blank=True, null=True)
     account = models.CharField(max_length=40, blank=True, null=True)
     
-    def __unicode__(self):
-        return "%s" % self.name
-        
     class Meta:
         verbose_name_plural = 'PDNS Domains'
+    
+    def __unicode__(self):
+        return "%s" % self.name
         
 class Records(models.Model):
     """
@@ -121,14 +121,15 @@ class Records(models.Model):
     ttl = models.IntegerField(blank=True, null=True)
     prio = models.IntegerField(blank=True, null=True)
     change_date = models.IntegerField(blank=True, null=True)
+    # This is for add support for dns sec. But not now.
     #ordername = models.CharField(max_length=255)
     #auth = models.BooleanField()
     
-    def __unicode__(self):
-        return "%s" % self.name
-        
     class Meta:
         verbose_name_plural = 'Records'
+    
+    def __unicode__(self):
+        return "%s" % self.name
         
 class Supermasters(models.Model):
     ip = models.IPAddressField()
@@ -142,11 +143,12 @@ class Language(models.Model):
     """
     name = models.CharField(max_length=100)
     
-    def __unicode__(self):
-        return "%s" % self.name
-        
     class Meta:
         ordering = ['id']
+    
+    def __unicode__(self):
+        return "%s" % self.name
+
 
 class Plan(models.Model):
     name = models.CharField(max_length=150)
