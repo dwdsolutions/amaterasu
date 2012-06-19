@@ -43,6 +43,7 @@ def deploy():
     copy_files()
     install_deps()
     collectstatic()
+    run_migrations()
     restart_supervisord()
     print(green('Deployed successfully', bold=True))
 
