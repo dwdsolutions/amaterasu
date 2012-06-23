@@ -3,6 +3,7 @@ import sys
 # Django settings for amaterasu project.
 
 PROJECT_ROOT = path.dirname(path.abspath(__file__))
+PROJECT_ROOT_URL = '/amaterasu/'
 
 sys.path.append(path.join(PROJECT_ROOT, 'apps'))
 
@@ -162,7 +163,8 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = '/amaterasu/login/'
+LOGIN_URL = PROJECT_ROOT_URL + 'login/'
+LOGIN_REDIRECT_URL = PROJECT_ROOT_URL
 
 # AWS Settings
 AWS_ACCESS_KEY_ID = 'AKIAIDZAEKODR3IUYWBA'
