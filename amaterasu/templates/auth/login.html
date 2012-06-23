@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="." method="post">
+        <fieldset>
+            {% csrf_token %}
+            <ul>
+                {% for field in form %}
+                    <li>
+                        <span><label for="{{ field.label }}">{{ field.label|title }}</label></span>
+                        <div class="controls">
+                            {{ field }}
+                            {% if field.errors %}
+                            <span class="help-inline">{{ field.errors|join:' ' }}</span>
+                            {% endif %}
+                            <span class="help-block">{{ field.help_text }}</span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <input type="submit" value="Login" class="submit" />
+            <ul class="forgo-ul">
+              <li> <a href="#">Forgot Username</a></li>
+              <li class="line"> </li>
+              <li> <a href="#">Forgot Password</a></li>
+            </ul>
+        </fieldset>
+    </form>
+    
+{% endblock %}
