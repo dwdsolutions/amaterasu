@@ -1,4 +1,5 @@
 from os import path, pardir
+from django.core.urlresolvers import reverse_lazy
 import sys
 # Django settings for amaterasu project.
 
@@ -163,8 +164,8 @@ LOGGING = {
     }
 }
 
+LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = PROJECT_ROOT_URL + 'login/'
-LOGIN_REDIRECT_URL = PROJECT_ROOT_URL
 
 # AWS Settings
 AWS_ACCESS_KEY_ID = 'AKIAIDZAEKODR3IUYWBA'
