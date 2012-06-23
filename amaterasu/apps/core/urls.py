@@ -7,6 +7,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', IndexView.as_view(), name="index"),
-    url(r'^login/$', auth_views.login, {'template_name': 'auth/login.html'}, name="auth_login")
+    url(r'^login/$', auth_views.login, {'template_name': 'auth/login.html'}, name="auth_login"),
     url(r'^admin/', include(admin.site.urls)),
 )
