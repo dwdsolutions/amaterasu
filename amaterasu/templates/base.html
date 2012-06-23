@@ -25,11 +25,10 @@
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
 		{% include "navbar.html" %}
         {% block extra-content %} {% endblock %}
-        <div class="container">
-            {% block content %} {% endblock %}
-            {% block brand-footer %}
-             <a href="{% url index %}" class="brand-footer">Amaterasu</a>
-            {% endblock %}
+        <div class="container-fluid">
+            <div class="row-fluid">
+                {% block content %} {% endblock %}
+            </div>
         </div>
         {% block footer %}
             {% include "footer.html" %}
