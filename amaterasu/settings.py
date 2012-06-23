@@ -162,6 +162,8 @@ LOGGING = {
     }
 }
 
+LOGIN_URL = '/amaterasu/login/'
+
 # AWS Settings
 AWS_ACCESS_KEY_ID = 'AKIAIDZAEKODR3IUYWBA'
 AWS_SECRET_ACCESS_KEY = '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'
