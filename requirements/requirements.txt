@@ -1,7 +1,9 @@
 Django==1.4
 Fabric==1.4.2
 South==0.7.5
+boto==2.5.2
 distribute==0.6.19
+django-storages==1.1.4
 passlib==1.6
 pycrypto==2.5
 ssh==1.7.14
