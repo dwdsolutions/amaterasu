@@ -1,0 +1,27 @@
+body 
+{
+    /*padding-top: 60px;*/
+    padding-bottom: 40px;
+} 
+
+.sidebar-nav 
+{
+    padding: 9px 0;
+}
+
+.hero-unit 
+{
+    margin-top:4em;
+}
+
+.hero-unit h1 {
+    font-size: 38px;
+    margin-top: 0.2em;
+    line-height: 1.1;
+    font-weight: normal;
+}
+
+.contact-form
+{
+    margin-top:4em;
+}
