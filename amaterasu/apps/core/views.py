@@ -16,6 +16,12 @@ from pprint import pprint
 class IndexView(TemplateView):
     template_name = "index.html"
     
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['index_active'] = True
+        
+        return context
+    
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(IndexView, self).dispatch(*args, **kwargs)

@@ -25,9 +25,9 @@
                             <li{% if index_active %} class="active"{% endif %}><a href="{% url index %}">{% trans "Home" %}</a></li>
                             <li{% if active %} class="active"{% endif %}><a href="#hosting">{% trans "Hosting" %}</a></li>
                             <li{% if active %} class="active"{% endif %}><a href="#domains">{% trans "Domains" %}</a></li>
-                            <li{% if active %} class="active"{% endif %}><a href="#services">{% trans "Services" %}</a></li>
-                            <li{% if active %} class="active"{% endif %}><a href="#about">{% trans "About" %}</a></li>
-                            <li{% if contact_active %} class="active"{% endif %}><a href="#">{% trans "Contact" %}</a></li>
+                            <li{% if active %} class="active"{% endif %}><a href="#services">{% trans "Emails" %}</a></li>
+                            <li{% if active %} class="active"{% endif %}><a href="#about">{% trans "Datases" %}</a></li>
+                            <li{% if dns_active %} class="active"{% endif %}><a href="#">{% trans "DNS" %}</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                     {% endif %}
