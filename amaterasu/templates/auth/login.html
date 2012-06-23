@@ -57,7 +57,7 @@
                           {% csrf_token %}
                           <ul>
                               {% for field in form %}
-                                  <li>
+                                   <div class="clearfix">
                                       <span><label for="{{ field.label }}">{{ field.label|title }}</label></span>
                                       <div class="controls">
                                           {{ field }}
@@ -66,7 +66,7 @@
                                           {% endif %}
                                           <span class="help-block">{{ field.help_text }}</span>
                                       </div>
-                                  </li>
+                                    </div>
                               {% endfor %}
                           </ul>
                           <input type="submit" value="Login" class="btn btn-primary" />
