@@ -69,7 +69,7 @@ STATIC_ROOT = path.join(PROJECT_ROOT, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://media.dwdandsolutions.com/amaterasu/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -161,6 +161,29 @@ LOGGING = {
         },
     }
 }
+
+# AWS Settings
+AWS_ACCESS_KEY_ID = 'AKIAIDZAEKODR3IUYWBA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'dwdsolutions'
+AWS_QUERYSTRING_EXPIRE = 864000 # 10 days
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_SECURE_URLS = True
+AWS_LOCATION = '/amaterasu/static'
+# Headers for static files
+AWS_HEADERS = {
+    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
+    'Cache-Control': 'max-age=86400',
+}
+
+AWS_IS_GZIPPED = True
+
+from S3 import CallingFormat
+AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 try:
     from local_settings import *
