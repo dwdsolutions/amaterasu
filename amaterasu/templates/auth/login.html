@@ -55,20 +55,20 @@
                   <form action="." method="post">
                       <fieldset>
                           {% csrf_token %}
-                          <ul>
-                              {% for field in form %}
-                                   <div class="control-group">
-                                      <span><label for="{{ field.label }}">{{ field.label|title }}</label></span>
-                                      <div class="controls">
-                                          {{ field }}
-                                          {% if field.errors %}
-                                          <span class="help-inline">{{ field.errors|join:' ' }}</span>
-                                          {% endif %}
-                                          <span class="help-block">{{ field.help_text }}</span>
-                                      </div>
-                                    </div>
-                              {% endfor %}
-                          </ul>
+                          
+                          {% for field in form %}
+                               <div class="control-group">
+                                  <span><label for="{{ field.label }}">{{ field.label|title }}</label></span>
+                                  <div class="controls">
+                                      {{ field }}
+                                      {% if field.errors %}
+                                      <span class="help-inline">{{ field.errors|join:' ' }}</span>
+                                      {% endif %}
+                                      <span class="help-block">{{ field.help_text }}</span>
+                                  </div>
+                                </div>
+                          {% endfor %}
+
                           <input type="submit" value="Sign In" class="btn btn-primary" />
                       </fieldset>
                   </form>
