@@ -161,6 +161,7 @@ class Plan(models.Model):
     languages = models.ManyToManyField(Language)
     db_mysql = models.IntegerField()
     db_postgres = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __unicode__(self):
         return "%s" % self.name

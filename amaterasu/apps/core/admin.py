@@ -17,13 +17,17 @@ class RecordsAdmin(admin.ModelAdmin):
     
 class PlanAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Nombre Plan', {'fields': ['nombre']}),
-        ('Espacios', {'fields': ['espacio', 'transferencia', 'cuentas_correo', 'subdominios', 'cuentas_ftp', 'db_mysql', 'db_postgres']}),
-        ('Lenguajes', {'fields': ['lenguajes']}),
-        ('Precio', {'fields': ['precio']}),
+        ('Plan Name', {'fields': ['name']}),
+        ('Capabilities', {'fields': [
+                        "bandwidth", "disk_space", 
+                        "email_accounts", "ftp_accounts", 
+                        "db_mysql", "db_postgres"]}),
+        ('Languages', {'fields': ['languages']}),
+        ('Price', {'fields': ['price']}),
     ]
     #inlines = [AdicionalInline]
-    list_display = ('nombre', 'espacio', 'transferencia', 'db_mysql', 'db_postgres', 'precio')
+    filter_horizontal = ('languages',)
+    list_display = ('name', 'bandwidth')
 
     
 class ClientProfileAdmin(admin.ModelAdmin):

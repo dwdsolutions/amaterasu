@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'core',
     'south',
+    'storages',
 )
 
 # Set the session path
