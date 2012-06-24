@@ -176,7 +176,7 @@ AWS_QUERYSTRING_EXPIRE = 864000 # 10 days
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_SECURE_URLS = True
 AWS_LOCATION = '/amaterasu/static'
-AWS_PRELOAD_METADATA = True
+#AWS_PRELOAD_METADATA = True
 # Headers for static files
 AWS_HEADERS = {
     'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
