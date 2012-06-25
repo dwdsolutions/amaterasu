@@ -3,7 +3,7 @@ Fabric==1.4.2
 South==0.7.5
 boto==2.5.2
 distribute==0.6.19
--e hg+https://bitbucket.org/darkness51/django-storages@00a385971212c1a6be6b17458a6520f9e48dd953#egg=django_storages-dev
+-e hg+https://bitbucket.org/darkness51/django-storages@df85df82ef5b8bee473847171e4dd47e2188d4b3#egg=django_storages-dev
 passlib==1.6
 pycrypto==2.5
 python-dateutil==2.1
