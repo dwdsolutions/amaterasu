@@ -50,5 +50,5 @@ class HostingView(ListView):
         
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(IndexView, self).dispatch(*args, **kwargs)
+        return super(HostingView, self).dispatch(*args, **kwargs)
     
