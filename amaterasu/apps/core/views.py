@@ -13,8 +13,12 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from pprint import pprint
+from models import Plan
 
 class IndexView(TemplateView):
+    """
+    Show the index dashboard
+    """
     template_name = "index.html"
     
     def get_context_data(self, **kwargs):
@@ -28,8 +32,23 @@ class IndexView(TemplateView):
         return super(IndexView, self).dispatch(*args, **kwargs)
         
 class RedirectToIndexView(RedirectView):
+    """
+    Redirect to index after logout
+    """
     def get_redirect_url(self, **kwargs):
         logout(self.request)
         return reverse('index')
-
+        
+class HostingView(ListView):
+    model = Plan
+    
+    def get_context_data(self, **kwargs):
+        context = super(HostingView, self).get_context_data(**kwargs)
+        context['hosting_active'] = True
+        
+        return context
+        
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(IndexView, self).dispatch(*args, **kwargs)
     
