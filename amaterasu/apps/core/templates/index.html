@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
     <header class="hero-unit">
-        <h1>Welcome to Amaterasu Hosting Control Panel</h1>
-        <p>Here you can manage all resources of your hosting!</p>
+        <h1>{% trans "Welcome to Amaterasu Hosting Control Panel" %}</h1>
+        <p>{% trans "Here you can manage all resources of your hosting!" %}</p>
     </header>
 {% endblock %}
