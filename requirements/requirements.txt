@@ -1,12 +1,18 @@
 Django==1.4
 Fabric==1.4.2
 South==0.7.5
+amqplib==1.0.2
+anyjson==0.3.3
+billiard==2.7.3.10
 boto==2.5.2
+celery==3.0.1
 distribute==0.6.19
+django-celery==3.0.1
 -e hg+https://bitbucket.org/darkness51/django-storages@df85df82ef5b8bee473847171e4dd47e2188d4b3#egg=django_storages-dev
+kombu==2.2.6
 passlib==1.6
 pycrypto==2.5
-python-dateutil==2.1
+python-dateutil==1.5
 six==1.1.0
 ssh==1.7.14
 wsgiref==0.1.2
