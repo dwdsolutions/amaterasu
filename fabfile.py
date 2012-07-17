@@ -42,7 +42,7 @@ def restart_supervisord():
 def deploy():
     copy_files()
     install_deps()
-    collectstatic()
+    #collectstatic()
     run_migrations()
     restart_supervisord()
     print(green('Deployed successfully', bold=True))
