@@ -40,20 +40,6 @@ class RedirectToIndexView(RedirectView):
         logout(self.request)
         return reverse('index')
         
-class HostingView(ListView):
-    model = Plan
-    template_name = "plan_list.html"
-    
-    def get_context_data(self, **kwargs):
-        context = super(HostingView, self).get_context_data(**kwargs)
-        context['hosting_active'] = True
-        
-        return context
-        
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(HostingView, self).dispatch(*args, **kwargs)
-        
 class ProfileView(UpdateView):
     """
     View to show the profile
