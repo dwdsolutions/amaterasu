@@ -169,8 +169,6 @@ class Plan(models.Model):
     
 class ClientProfile(models.Model):
     user = models.OneToOneField(User)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
     phone = models.CharField(max_length=15)
     email = models.EmailField()
     
