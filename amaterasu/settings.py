@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'core',
+    'hosting',
     'south',
     'storages',
 )
