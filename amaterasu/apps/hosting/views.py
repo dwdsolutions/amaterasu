@@ -10,17 +10,21 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from pprint import pprint
+from core.models import ClientProfile
 
-class HostingIndexView(ListView):
-    model = Plan
-    template_name = "plan_list.html"
+class HostingIndexView(TemplateView):
+    template_name = "hosting/index.html"
     
     def get_context_data(self, **kwargs):
-        context = super(HostingView, self).get_context_data(**kwargs)
+        context = super(HostingIndexView, self).get_context_data(**kwargs)
         context['hosting_active'] = True
         
         return context
         
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(HostingView, self).dispatch(*args, **kwargs)
+        return super(HostingIndexView, self).dispatch(*args, **kwargs)
+        
+class HostingListEmailView(ListView):
+    model = ClientProfile
+    template_name = 'hosting/index.html'

@@ -4,13 +4,7 @@
 {% block content %}
     <div class="row-fluid row-first">
         <aside class="span2">
-            <div class="well sidebar-nav">
-                <ul class="nav nav-list">
-                    <li class="nav-header">Hosting</li>
-                    <li><a href="#"><i class="icon-envelope"></i> Emails</a></li>
-                    <li><a href="#"><i class="icon-hdd"></i> Databases</a></li>
-                </ul>
-            </div>
+            {% include "hosting/navbar.html" %}
         </aside>
         <section class="span10">
             <h2>Hostin Management</h2>
