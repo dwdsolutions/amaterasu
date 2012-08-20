@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
-from models import ClientProfile
+from models import ClientProfile, Domain
 
 class SearchForm(forms.Form):
     """
@@ -16,3 +16,15 @@ class ClientProfileForm(forms.ModelForm):
     class Meta:
         model = ClientProfile
         exclude = ('user')
+        
+class SelectDomainForm(forms.Form):
+    domain = forms.ChoiceField(label="Select a Domain", choices=[])
+    
+    def __init__(self, *args, **kwargs):
+        super(SelectDomainForm, self).__init__(*args, **kwargs)
+        domains = Domain.objects.filter(active=True)
+        domains_choices = []
+        for d in domains:
+            domains_choices.append((d.id, d.name))
+        
+        self.fields['domain'].choices = domains_choices
