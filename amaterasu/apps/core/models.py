@@ -138,6 +138,9 @@ class Supermasters(models.Model):
     nameserver = models.CharField(max_length=255)
     account = models.CharField(max_length=40)
     
+    def __unicode__(self):
+        return "{0}".format(self.nameserver)
+    
 # Class related to plans and clients
 class Language(models.Model):
     """
