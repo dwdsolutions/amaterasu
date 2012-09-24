@@ -48,6 +48,7 @@ class DomainEditView(UpdateView):
     """
     Class based view to show the form to edit a domain
     """
+    model = Domain
     form_class = DomainForm
     template_name = "edit_domain.html"
         
