@@ -65,6 +65,7 @@ class Domain(models.Model):
     """
     name = models.CharField(max_length=100)
     transport = models.CharField(max_length=50, default='dovecot')
+    client = models.ForeignKey(User)
     active = models.BooleanField(default=True)
     
     def __unicode__(self):
