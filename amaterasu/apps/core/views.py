@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from pprint import pprint
 from models import Plan, ClientProfile, Domain
-from forms import ClientProfileForm, SelectDomainForm
+from forms import ClientProfileForm, DomainForm
 
 class IndexView(TemplateView):
     """
