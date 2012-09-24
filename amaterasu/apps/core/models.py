@@ -69,7 +69,7 @@ class Domain(models.Model):
     active = models.BooleanField(default=True)
     
     def __unicode__(self):
-        return "%s" % self.name
+        return ""%s" % self.name"
         
 @receiver(post_save, sender=Mailbox)        
 def add_alias_and_transport(sender, **kwargs):
@@ -184,6 +184,6 @@ class ClientProfile(models.Model):
         return '{0}'.format(self.get_full_name())
         
     def get_full_name(self):
-        return '{0} {1}'.format(self.firt_name, self.last_name)
+        return '{0} {1}'.format(self.user.firt_name, self.user.last_name)
         
     get_full_name.verbose_name = "Full Name"
