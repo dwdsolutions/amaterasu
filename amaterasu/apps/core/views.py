@@ -44,7 +44,7 @@ class RedirectToIndexView(RedirectView):
         logout(self.request)
         return reverse('index')
         
-class DomainEditView(FormView):
+class DomainEditView(UpdateView):
     """
     Class based view to show the form to edit a domain
     """
