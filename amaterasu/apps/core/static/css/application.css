@@ -1,22 +1,12 @@
 body 
 {
-    /*padding-top: 60px;*/
-    padding-bottom: 40px;
+    padding-top: 4em;
+    /*padding-bottom: 40px;*/
 } 
-
-.row-first 
-{
-    margin-top:4em;
-}
 
 .sidebar-nav 
 {
     padding: 9px 0;
-}
-
-.hero-unit 
-{
-    margin-top:4em;
 }
 
 .hero-unit h1 {
@@ -26,12 +16,13 @@ body
     font-weight: normal;
 }
 
-.footer {
-    margin-top: 45px;
-    padding: 35px 0 36px;
-    border-top: 1px solid #E5E5E5;
-}
-
 .select-domain-form {
     text-align:center;
+}
+
+.footer {
+    padding: 70px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+    background-color: whiteSmoke;
 }

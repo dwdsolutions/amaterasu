@@ -26,11 +26,11 @@
 		{% include "navbar.html" %}
         {% block extra-content %} {% endblock %}
         <div class="container-fluid">
+            <div class="row-fluid">
                 {% block content %} {% endblock %}
-            {% block footer %}
-                {% include "footer.html" %}
-            {% endblock %}
+            </div>
         </div>
+        {% include "footer.html" %}
         
         <!-- Scripts aqui -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
