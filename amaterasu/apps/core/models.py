@@ -173,7 +173,6 @@ class Plan(models.Model):
 class ClientProfile(models.Model):
     user = models.OneToOneField(User)
     phone = models.CharField(max_length=15)
-    email = models.EmailField()
     
     class Meta:
         ordering = ['user']

@@ -13,7 +13,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from pprint import pprint
-from models import Plan, ClientProfile
+from models import Plan, ClientProfile, Domain
 from forms import ClientProfileForm, SelectDomainForm
 
 class IndexView(TemplateView):
@@ -24,8 +24,8 @@ class IndexView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['form'] = SelectDomainForm()
         context['index_active'] = True
+        context['domains'] = Domain.objects.all()
         
         return context
     

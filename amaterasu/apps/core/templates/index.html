@@ -2,13 +2,31 @@
 {% load i18n %}
 
 {% block content %}
-    <header class="hero-unit">
-        <h1>{% trans "Welcome to Amaterasu Hosting Control Panel" %}</h1>
-        <p>{% trans "Here you can manage all resources of your hosting!" %}</p>
-    </header>
+<div class="span10">
     <div class="row-fluid">
-        <div class="select-domain-form">
-            {{ form }}
+        <div class="span5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Domain</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                {% if domains %}
+                    <tbody>
+                        {% for domain in domains %}
+                            <tr>
+                                <td>{{ domain }}</td>
+                                <td><a href="#" class="btn">{% trans "Edit" %}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                {% endif %}
+            </table>
+        </div>
+        <div class="span5">
+            
         </div>
     </div>
+</div>
 {% endblock %}
