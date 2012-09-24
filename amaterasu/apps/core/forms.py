@@ -17,6 +17,11 @@ class ClientProfileForm(forms.ModelForm):
         model = ClientProfile
         exclude = ('user')
         
+class DomainForm(forms.ModelForm):
+    class Meta:
+        model = Domain
+        exclude = ('client',)
+        
 class SelectDomainForm(forms.Form):
     domain = forms.ChoiceField(label="Select a Domain", choices=[])
     
