@@ -1,7 +1,7 @@
 import uuid
 import logging
 import datetime
-from django.views.generic import FormView, TemplateView, ListView, DetailView, UpdateView, RedirectView, UpdateView
+from django.views.generic import FormView, TemplateView, ListView, DetailView, UpdateView, RedirectView, CreateView
 from django.views.generic.base import View
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
@@ -43,6 +43,14 @@ class RedirectToIndexView(RedirectView):
     def get_redirect_url(self, **kwargs):
         logout(self.request)
         return reverse('index')
+        
+class DomainAddView(CreateView):
+    """
+    Class based view to show the form to add a domain
+    """
+    model = Domain
+    form_class = DomainForm
+    template_name = "add_domain.html"
         
 class DomainEditView(UpdateView):
     """
