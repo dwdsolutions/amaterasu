@@ -44,6 +44,13 @@ class RedirectToIndexView(RedirectView):
         logout(self.request)
         return reverse('index')
         
+class DomainEditView(FormView):
+    """
+    Class based view to show the form to edit a domain
+    """
+    form_class = DomainForm
+    template_name = "edit_domain.html"
+        
 class ProfileView(UpdateView):
     """
     View to show the profile
