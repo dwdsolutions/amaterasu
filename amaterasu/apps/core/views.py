@@ -25,7 +25,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['index_active'] = True
-        if self.request.user.is_admin:
+        if self.request.user.is_superuser:
             context['domains'] = Domain.objects.all()
         else:
             context['domains'] = Domain.objects.filter(client=self.request.user)
