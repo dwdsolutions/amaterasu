@@ -69,7 +69,7 @@ class Domain(models.Model):
     active = models.BooleanField(default=True)
     
     def __unicode__(self):
-        return ""%s" % self.name"
+        return "{0}".format(self.name)
         
 @receiver(post_save, sender=Mailbox)        
 def add_alias_and_transport(sender, **kwargs):
