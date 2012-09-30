@@ -13,7 +13,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from pprint import pprint
-from models import Plan, ClientProfile, Domain
+from models import Plan, ClientProfile, Domain, Mailbox
 from forms import ClientProfileForm, DomainForm
 
 class IndexView(TemplateView):
