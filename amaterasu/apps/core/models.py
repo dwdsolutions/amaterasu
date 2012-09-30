@@ -47,7 +47,7 @@ class Mailbox(models.Model):
         res = ''
         mailparts = self.username.split('@')
         self.local_part = mailparts[0]
-        self.domain = mailparts[1]
+        #self.domain = mailparts[1]
         self.maildir = self.username + '/'
         
         res = re.search("$1$", self.password)
