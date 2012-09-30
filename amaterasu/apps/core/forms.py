@@ -25,6 +25,7 @@ class DomainForm(forms.ModelForm):
 class MailboxForm(forms.ModelForm):
     class Meta:
         model = Mailbox
+        exclude = ('domain',)
         
 class SelectDomainForm(forms.Form):
     domain = forms.ChoiceField(label="Select a Domain", choices=[])

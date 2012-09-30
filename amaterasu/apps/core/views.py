@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from pprint import pprint
 from models import Plan, ClientProfile, Domain, Mailbox
-from forms import ClientProfileForm, DomainForm
+from forms import ClientProfileForm, DomainForm, MailboxForm
 
 class IndexView(TemplateView):
     """
@@ -68,6 +68,14 @@ class EmailListView(ListView):
     
     def get_queryset(self):
         return Mailbox.objects.filter(domain=self.kwargs.get('domain_id'))
+        
+class EmailEditView(UpdateView):
+    model = Mailbox
+    form_class = MailboxForm
+    template_name = "edit_email.html"
+    
+    def get_success_url(self):
+        return reverse("email-index", args=[self.object.domain.id])
         
 class ProfileView(UpdateView):
     """
