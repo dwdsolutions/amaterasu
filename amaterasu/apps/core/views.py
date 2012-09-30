@@ -62,7 +62,7 @@ class DomainEditView(UpdateView):
     
 class EmailListView(ListView):
     model = Mailbox
-    context_object_name = mailboxes
+    context_object_name = "mailboxes"
     template_name = "email_list.html"
         
 class ProfileView(UpdateView):
