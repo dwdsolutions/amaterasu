@@ -59,6 +59,11 @@ class DomainEditView(UpdateView):
     model = Domain
     form_class = DomainForm
     template_name = "edit_domain.html"
+    
+class EmailListView(ListView):
+    model = Mailbox
+    context_object_name = mailboxes
+    template_name = "email_list.html"
         
 class ProfileView(UpdateView):
     """

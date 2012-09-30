@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="span10 offset1">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Quota</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mailbox in mailboxes %}
+                <tr>
+                    <td>{{ mailbox.username }}</td>
+                    <td>{{ mailbox.name }}</td>
+                    <td>{{ mailbox.quota }}</td>
+                    <td>{{ mailbox.active }}</td>
+                    <td><a href="#" class="btn btn-mini">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

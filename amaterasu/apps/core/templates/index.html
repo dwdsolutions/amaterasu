@@ -22,7 +22,7 @@
                                 <td>{{ domain }}</td>
                                 <td>
                                     <a href="{% url edit-domain domain.id %}" class="btn btn-mini">{% trans "Edit" %}</a>
-                                    <a href="#" class="btn btn-mini">{% trans "Emails" %}</a>
+                                    <a href="{% url email-index domain.id %}" class="btn btn-mini">{% trans "Emails" %}</a>
                                     <a href="#" class="btn btn-mini">{% trans "DNS" %}</a>
                                     <a href="#" class="btn btn-mini">{% trans "Databases" %}</a>
                                 </td>
