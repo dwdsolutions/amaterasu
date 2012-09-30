@@ -10,6 +10,18 @@ from django.contrib.auth.hashers import make_password
 from passlib.hash import md5_crypt
 
 
+class Domain(models.Model):
+    """
+    Class to represent an email domain
+    """
+    name = models.CharField(max_length=100)
+    transport = models.CharField(max_length=50, default='dovecot')
+    client = models.ForeignKey(User)
+    active = models.BooleanField(default=True)
+    
+    def __unicode__(self):
+        return "{0}".format(self.name)
+
 class Mailbox(models.Model):
     """
     Class to represent a mailbox
@@ -58,18 +70,6 @@ class Alias(models.Model):
     
     def __unicode__(self):
         return "%s" % self.address
-        
-class Domain(models.Model):
-    """
-    Class to represent an email domain
-    """
-    name = models.CharField(max_length=100)
-    transport = models.CharField(max_length=50, default='dovecot')
-    client = models.ForeignKey(User)
-    active = models.BooleanField(default=True)
-    
-    def __unicode__(self):
-        return "{0}".format(self.name)
         
 @receiver(post_save, sender=Mailbox)        
 def add_alias_and_transport(sender, **kwargs):
