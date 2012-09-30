@@ -134,8 +134,8 @@ INSTALLED_APPS = (
     'storages',
 )
 
-# Set the session path
-SESSION_COOKIE_PATH = '/amaterasu/'
+# Set the session path if you want use as a folder
+#SESSION_COOKIE_PATH = '/amaterasu/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
