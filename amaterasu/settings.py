@@ -4,7 +4,7 @@ import sys
 # Django settings for amaterasu project.
 
 PROJECT_ROOT = path.dirname(path.abspath(__file__))
-PROJECT_ROOT_URL = '/amaterasu/'
+PROJECT_ROOT_URL = '/'
 
 sys.path.append(path.join(PROJECT_ROOT, 'apps'))
 
