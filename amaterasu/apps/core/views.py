@@ -71,7 +71,7 @@ class EmailListView(ListView):
         """
         context = super(EmailListView, self).get_context_data(**kwargs)
         context['mailboxes'] = Mailbox.objects.filter(domain=kwargs.get('domain_id'))
-        
+        print kwargs
         return context
         
 class ProfileView(UpdateView):
