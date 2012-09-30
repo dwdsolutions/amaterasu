@@ -64,7 +64,15 @@ class EmailListView(ListView):
     model = Mailbox
     context_object_name = "mailboxes"
     template_name = "email_list.html"
-    queryset = Mailbox.objects.filter(domain=self.request.GET.get('domain_id')) 
+    
+    def get_context_data(self, **kwargs):
+        """
+        Create the context object for this view
+        """
+        context = super(EmailListView, self).get_context_data(**kwargs)
+        context['mailboxes'] = Mailbox.objects.filter(domain=kwargs.get('domain_id'))
+        
+        return context
         
 class ProfileView(UpdateView):
     """
