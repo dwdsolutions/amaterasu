@@ -64,6 +64,7 @@ class EmailListView(ListView):
     model = Mailbox
     context_object_name = "mailboxes"
     template_name = "email_list.html"
+    queryset = Mailbox.objects.filter(domain=self.request.GET.get('domain_id')) 
         
 class ProfileView(UpdateView):
     """
