@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^hosting/', include('hosting.urls')),
     url(r'^domain/(?P<pk>\d+)/edit/$', DomainEditView.as_view(), name="edit-domain"),
     url(r'^domain/add/$', DomainAddView.as_view(), name="add-domain"),
-    url(r'^domain/(?P<domain_id>\d+)/emails/', EmailListView.as_view(), name="email-index"),
+    url(r'^domain/(?P<domain_id>\d+)/emails/$', EmailListView.as_view(), name="email-index"),
     url(r'^profile/(?P<pk>\d+)/$', ProfileView.as_view(), name="profile"),
     url(r'^admin/', include(admin.site.urls)),
 )
