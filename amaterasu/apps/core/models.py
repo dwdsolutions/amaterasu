@@ -49,11 +49,9 @@ class Mailbox(models.Model):
         self.local_part = mailparts[0]
         #self.domain = mailparts[1]
         self.maildir = self.username + '/'
-        print self.password
+        
         res = re.search(r"\$1\$", self.password)
-        print res
         if not res:
-            print "supuestamente no encuentra la cadena"
             self.password = md5_crypt.encrypt(self.password)
         
 class Alias(models.Model):
