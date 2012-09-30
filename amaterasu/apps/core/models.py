@@ -14,13 +14,13 @@ class Mailbox(models.Model):
     """
     Class to represent a mailbox
     """
+    domain = models.ForeignKey(Domain)
     username = models.EmailField(max_length=150)
     password = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     maildir = models.CharField(max_length=150, blank=True)
     quota = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     local_part = models.CharField(max_length=100, blank=True)
-    domain = models.CharField(max_length=100, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
