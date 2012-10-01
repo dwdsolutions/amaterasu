@@ -3,13 +3,14 @@
 {% block content %}
 <div class="span10 offset1">
     <div class="row-fluid">
+        <a href="#" class="btn btn-primary">New</a>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Username</th>
                     <th>Name</th>
                     <th>Quota</th>
-                    <th>Active</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -19,7 +20,13 @@
                         <td>{{ mailbox.username }}</td>
                         <td>{{ mailbox.name }}</td>
                         <td>{{ mailbox.quota }}</td>
-                        <td>{{ mailbox.active }}</td>
+                        <td>
+                            {% if mailbox.active %}
+                                <span class="label label-success">Active</span>
+                            {% else %}
+                                <span class="label label-warn">Inactive</span>
+                            {% endif %}
+                        </td>
                         <td><a href="{% url email-edit mailbox.id %}" class="btn btn-mini">Edit</a></td>
                     </tr>
                 {% endfor %}
