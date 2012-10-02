@@ -4,10 +4,23 @@
 <div class="span10 offset1">
     <div class="row-fluid">
         <h2>Edit Email</h2>
-        <form method="post" action=".">
+        <form class="form-horizontal" method="post" action=".">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Update</button>
+            {% for field in form %}
+                <div class="control-group{% if field.errors %} error{% endif %}">
+                    <label class="control-label" for="{{ field.label }}">{{ field.label|title }}</label>
+                    <div class="controls">
+                        {{ field }}
+                        {% if field.errors %}
+                            <span class="help-inline">{{ field.errors|join:' ' }}</span>
+                        {% endif %}
+                        <span class="help-block">{{ field.help_text }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
         </form>
     </div>
 </div>

@@ -27,7 +27,7 @@ class Mailbox(models.Model):
     Class to represent a mailbox
     """
     domain = models.ForeignKey(Domain)
-    username = models.EmailField(max_length=150)
+    username = models.EmailField(max_length=150, unique=True)
     password = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     maildir = models.CharField(max_length=150, blank=True)

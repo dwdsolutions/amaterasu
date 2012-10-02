@@ -51,6 +51,15 @@ class DomainAddView(CreateView):
     model = Domain
     form_class = DomainForm
     template_name = "add_domain.html"
+    
+    def get_success_url(self):
+        return reverse('index')
+        
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.client = self.request.user
+        self.object.save()
+        return super(DomainAddView, self).form_valid(form)
         
 class DomainEditView(UpdateView):
     """
@@ -68,6 +77,27 @@ class EmailListView(ListView):
     
     def get_queryset(self):
         return Mailbox.objects.filter(domain=self.kwargs.get('domain_id'))
+        
+    def get_context_data(self, **kwargs):
+        context = super(EmailListView, self).get_context_data(**kwargs)
+        context['domain_id'] = self.kwargs.get('domain_id')
+        
+        return context
+        
+class EmailAddView(CreateView):
+    model = Mailbox
+    form_class = MailboxForm
+    template_name = "add_email.html"
+    
+    def get_success_url(self):
+        return reverse("email-index", args=[self.kwargs.get('domain_id')])
+        
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        domain = Domain.objects.get(pk=self.kwargs.get('domain_id'))
+        self.object.domain = domain
+        self.object.save()
+        return super(EmailAddView, self).form_valid(form)
         
 class EmailEditView(UpdateView):
     model = Mailbox
