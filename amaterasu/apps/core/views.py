@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 from pprint import pprint
 from models import Plan, ClientProfile, Domain, Mailbox
 from forms import ClientProfileForm, DomainForm, MailboxForm
@@ -106,6 +107,28 @@ class EmailEditView(UpdateView):
     
     def get_success_url(self):
         return reverse("email-index", args=[self.object.domain.id])
+        
+class EmailDisableView(View):
+    """
+    Class to change the status from a mailbox to disable
+    """
+    def get(self, request, *args, **kwargs):
+        email = Mailbox.objects.get(pk=kwargs.get('email_id'))
+        email.active = False
+        email.save()
+        
+        return HttpResponseRedirect(reverse('email-index', args=[kwargs.get('domain_id')]))
+        
+class EmailEnableView(View):
+    """
+    Class to change the status from a mailbox to disable
+    """
+    def get(self, request, *args, **kwargs):
+        email = Mailbox.objects.get(pk=kwargs.get('email_id'))
+        email.active = True
+        email.save()
+        
+        return HttpResponseRedirect(reverse('email-index', args=[kwargs.get('domain_id')]))
         
 class ProfileView(UpdateView):
     """

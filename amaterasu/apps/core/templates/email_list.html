@@ -26,10 +26,14 @@
                             {% if mailbox.active %}
                                 <span class="label label-success">Active</span>
                             {% else %}
-                                <span class="label label-warn">Inactive</span>
+                                <span class="label label-important">Inactive</span>
                             {% endif %}
                         </td>
-                        <td><a href="{% url email-edit mailbox.id %}" class="btn btn-mini">Edit</a></td>
+                        <td>
+                            <a href="{% url email-edit domain_id mailbox.id %}" class="btn btn-mini">Edit</a>
+                            <a href="{% url email-enable domain_id mailbox.id %}" class="btn btn-mini btn-info">Enable</a>
+                            <a href="{% url email-disable domain_id mailbox.id %}" class="btn btn-mini btn-danger">Disable</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
