@@ -1,5 +1,6 @@
-import datetime
 import re
+import time
+import datetime
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext as _
@@ -17,6 +18,7 @@ class Domain(models.Model):
     name = models.CharField(max_length=100)
     transport = models.CharField(max_length=50, default='dovecot')
     client = models.ForeignKey(User)
+    have_dns_service = models.BooleanField(default=True)
     active = models.BooleanField(default=True)
     
     def __unicode__(self):
@@ -59,7 +61,7 @@ class Alias(models.Model):
     Class to represent an email alias
     """
     address = models.EmailField(max_length=150)
-    goto = models.EmailField(max_length=150)
+    goto = models.TextField(max_length=150)
     domain = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now_add=True)
@@ -69,7 +71,7 @@ class Alias(models.Model):
         verbose_name_plural = 'Aliases'
     
     def __unicode__(self):
-        return "%s" % self.address
+        return "{0}".format(self.address)
         
 @receiver(post_save, sender=Mailbox)        
 def add_alias_and_transport(sender, **kwargs):
@@ -78,12 +80,22 @@ def add_alias_and_transport(sender, **kwargs):
         if mailbox:
             alias = Alias(address=mailbox.username, goto=mailbox.username, domain=mailbox.domain)
             alias.save()
-            domain = Domain.objects.get_or_create(name=mailbox.domain)[0]
+            domain = mailbox.domain
             if domain.transport != 'dovecot':
                 domain.transport = 'dovecot'
                 domain.save()
             else:
                 domain.save()
+                
+@receiver(post_save, sender=Domain)
+def create_pdns_domain(sender, **kwargs):
+    """
+    Create the PDNS Domain if have_dns_service is active in Domain model
+    """
+    if kwargs.get('created', False):
+        domain = kwargs.get('instance', None)
+        if domain.have_dns_service:
+            pdns_domain = PdnsDomains(name=domain.name, type="MASTER", notified_serial=int(time.time()))
 
 class PdnsDomains(models.Model):
     """
@@ -100,7 +112,7 @@ class PdnsDomains(models.Model):
         verbose_name_plural = 'PDNS Domains'
     
     def __unicode__(self):
-        return "%s" % self.name
+        return "{0}".format(self.name)
         
 class Records(models.Model):
     """
@@ -132,7 +144,7 @@ class Records(models.Model):
         verbose_name_plural = 'Records'
     
     def __unicode__(self):
-        return "%s" % self.name
+        return "{}".format(self.name)
         
 class Supermasters(models.Model):
     ip = models.IPAddressField()
@@ -153,7 +165,7 @@ class Language(models.Model):
         ordering = ['id']
     
     def __unicode__(self):
-        return "%s" % self.name
+        return "{}".format(self.name)
 
 
 class Plan(models.Model):
@@ -168,7 +180,7 @@ class Plan(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __unicode__(self):
-        return "%s" % self.name
+        return "{}".format(self.name)
     
     
 class ClientProfile(models.Model):

@@ -14,8 +14,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from pprint import pprint
-from models import Plan, ClientProfile, Domain, Mailbox
-from forms import ClientProfileForm, DomainForm, MailboxForm
+from models import Plan, ClientProfile, Domain, Mailbox, Record
+from forms import ClientProfileForm, DomainForm, MailboxForm, RecordForm
 
 class IndexView(TemplateView):
     """
@@ -129,6 +129,24 @@ class EmailEnableView(View):
         email.save()
         
         return HttpResponseRedirect(reverse('email-index', args=[kwargs.get('domain_id')]))
+        
+class DNSRecordListView(ListView):
+    """
+    Show the DNS records for one domain
+    """
+    model = Record
+    context_object_name = "records"
+    template_name = "domain_records_list.html"
+    
+    def get_queryset(self):
+        return Record.objects.filter(domain=self.kwargs.get('domain_id'))
+        
+    def get_context_data(self, **kwargs):
+        context = super(DNSRecordListView, self).get_context_data(**kwargs)
+        context['domain_id'] = self.kwargs.get('domain_id')
+        
+        return context
+    
         
 class ProfileView(UpdateView):
     """

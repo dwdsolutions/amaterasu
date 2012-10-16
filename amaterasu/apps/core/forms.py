@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
-from models import ClientProfile, Domain, Mailbox
+from models import ClientProfile, Domain, Mailbox, Record
 
 class SearchForm(forms.Form):
     """
@@ -25,6 +25,11 @@ class DomainForm(forms.ModelForm):
 class MailboxForm(forms.ModelForm):
     class Meta:
         model = Mailbox
+        exclude = ('domain',)
+        
+class RecordForm(forms.ModelForm):
+    class Meta:
+        model = Record
         exclude = ('domain',)
         
 class SelectDomainForm(forms.Form):
