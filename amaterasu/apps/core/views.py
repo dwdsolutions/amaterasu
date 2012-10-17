@@ -134,7 +134,7 @@ class DNSRecordListView(ListView):
     """
     Show the DNS records for one domain
     """
-    model = Record
+    model = Records
     context_object_name = "records"
     template_name = "domain_records_list.html"
     
