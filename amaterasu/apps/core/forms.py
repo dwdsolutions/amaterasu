@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
-from models import ClientProfile, Domain, Mailbox, Record
+from models import ClientProfile, Domain, Mailbox, Records
 
 class SearchForm(forms.Form):
     """
