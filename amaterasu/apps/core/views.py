@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from pprint import pprint
-from models import Plan, ClientProfile, Domain, Mailbox, RecordS
+from models import Plan, ClientProfile, Domain, Mailbox, Records
 from forms import ClientProfileForm, DomainForm, MailboxForm, RecordForm
 
 class IndexView(TemplateView):
