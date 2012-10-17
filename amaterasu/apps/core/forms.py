@@ -29,7 +29,7 @@ class MailboxForm(forms.ModelForm):
         
 class RecordForm(forms.ModelForm):
     class Meta:
-        model = Record
+        model = Records
         exclude = ('domain',)
         
 class SelectDomainForm(forms.Form):
