@@ -196,6 +196,6 @@ class ClientProfile(models.Model):
         return '{0}'.format(self.get_full_name())
         
     def get_full_name(self):
-        return '{0} {1}'.format(self.user.first_name, self.user.last_name)
+        return '{0} {1}'.format(self.user.get_full_name())
         
     get_full_name.verbose_name = "Full Name"

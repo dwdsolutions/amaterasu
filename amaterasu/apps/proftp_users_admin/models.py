@@ -2,6 +2,7 @@ import hashlib
 import base64
 import re
 from django.db import models
+from core.models import Domain
 
 # Create your models here.
 class Usuario(models.Model):
@@ -14,6 +15,7 @@ class Usuario(models.Model):
     count = models.IntegerField(default=0)
     accessed = models.DateTimeField()
     modified = models.DateTimeField()
+    domain = models.ForeignKey(Domain)
     
     def __unicode__(self):
         return unicode(self.userid)
@@ -37,6 +39,7 @@ class Group(models.Model):
     group_name = models.CharField(max_length=16)
     gid = models.SmallIntegerField(default=5500)
     members = models.CharField(max_length=16)
+    domain = models.ForeignKey(Domain)
     
     def __unicode__(self):
         return unicode(self.group_name)
@@ -73,6 +76,7 @@ class Quota_Limit(models.Model):
     files_in_avail = models.IntegerField(default=0)
     files_out_avail = models.IntegerField(default=0)
     files_xfer_avail = models.IntegerField(default=0)
+    domain = models.ForeignKey(Domain)
     
     def __unicode__(self):
         return unicode(self.name)
@@ -97,6 +101,7 @@ class Quota_Tally(models.Model):
     files_in_avail = models.IntegerField(default=0)
     files_out_avail = models.IntegerField(default=0)
     files_xfer_avail = models.IntegerField(default=0)
+    domain = models.ForeignKey(Domain)
     
     def __unicode__(self):
         return unicode(self.name)

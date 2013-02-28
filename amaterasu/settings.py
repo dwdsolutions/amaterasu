@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'hosting',
     'south',
     'storages',
+    'proftp_users_admin',
 )
 
 # Set the session path if you want use as a folder
