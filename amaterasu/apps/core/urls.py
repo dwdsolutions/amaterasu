@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from views import IndexView, RedirectToIndexView, ProfileView, DomainEditView, DomainAddView, EmailListView, \
-EmailEditView, EmailAddView, EmailEnableView, EmailDisableView
+EmailEditView, EmailAddView, EmailEnableView, EmailDisableView, DNSRecordListView
 
 admin.autodiscover()
 
@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^domain/(?P<domain_id>\d+)/email/(?P<pk>\d+)/edit/$', EmailEditView.as_view(), name="email-edit"),
     url(r'^domain/(?P<domain_id>\d+)/email/(?P<email_id>\d+)/enable/$', EmailEnableView.as_view(), name="email-enable"),
     url(r'^domain/(?P<domain_id>\d+)/email/(?P<email_id>\d+)/disable/$', EmailDisableView.as_view(), name="email-disable"),
+    url(r'^domain/(?P<domain_id>\d+)/dns/records/$', DNSRecordListView.as_view(), name="dns-index"),
     url(r'^profile/(?P<pk>\d+)/$', ProfileView.as_view(), name="profile"),
     url(r'^admin/', include(admin.site.urls)),
 )

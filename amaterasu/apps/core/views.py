@@ -139,7 +139,7 @@ class DNSRecordListView(ListView):
     template_name = "domain_records_list.html"
     
     def get_queryset(self):
-        return Record.objects.filter(domain=self.kwargs.get('domain_id'))
+        return Records.objects.filter(domain=self.kwargs.get('domain_id'))
         
     def get_context_data(self, **kwargs):
         context = super(DNSRecordListView, self).get_context_data(**kwargs)

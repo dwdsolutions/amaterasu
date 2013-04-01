@@ -1,5 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="span10 offset1">
+    <div class="row-fluid">
+        <p>
+            <a href="#" class="btn btn-primary">New</a>
+        </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Content</th>
+                    <th>TTL</th>
+                    <th>Priority</th>
+                    <th>Change Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.name }}</td>
+                        <td>{{ record.type }}</td>
+                        <td>{{ record.content }}</td>
+                        <td>{{ record.ttl }}</td>
+                        <td>{{ record.prio }}</td>
+                        <td>{{ record.change_date }}</td>
+                        <td>
+                            <a href="{% url email-edit domain_id mailbox.id %}" class="btn btn-mini">Edit</a>
+                            <a href="#" class="btn btn-mini btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {% if is_paginated %}
+            <ul class="pager">
+                {% if page_obj.has_previous %}
+                    <li><a href="{% url email-index domain_id %}?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li><a href="{% url email-index domain_id %}?page={{ page_obj.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
