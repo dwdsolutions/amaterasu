@@ -18,3 +18,4 @@ python-dateutil==1.5
 six==1.1.0
 ssh==1.7.14
 wsgiref==0.1.2
+raven==3.3.3
