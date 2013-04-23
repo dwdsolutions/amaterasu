@@ -8,8 +8,8 @@ from core.models import Domain
 class Usuario(models.Model):
     userid = models.CharField(max_length=32)
     password = models.CharField(max_length=45)
-    uid = models.IntegerField(default=5500)
-    gid = models.IntegerField(default=5500)
+    uid = models.IntegerField(default=65534)
+    gid = models.IntegerField(default=65534)
     homedir = models.CharField(max_length=255)
     shell = models.CharField(max_length=20, default="/sbin/nologin")
     count = models.IntegerField(default=0)
