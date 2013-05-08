@@ -70,6 +70,9 @@ class DomainEditView(UpdateView):
     form_class = DomainForm
     template_name = "edit_domain.html"
     
+    def get_success_url(self):
+        return reverse('index')
+    
 class EmailListView(ListView):
     model = Mailbox
     context_object_name = "mailboxes"
