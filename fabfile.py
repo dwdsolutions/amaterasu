@@ -1,5 +1,6 @@
-import os
-from fabric.api import *
+from os import path, pardir
+from fabric.api import env, sudo, cd, local, run, settings, prefix, task
+from fabric.operations import get, put, open_shell
 from fabric.colors import green, red
 from pprint import pprint
 
@@ -9,7 +10,7 @@ env.hosts = ['64.22.109.92']
 env.user = 'root'
 
 def copy_files():
-    if os.path.exists('/tmp/amaterasu.zip'):
+    if path.exists('/tmp/amaterasu.zip'):
         local('rm -r /tmp/amaterasu.zip')
         
     local('git archive --format=zip --prefix=amaterasu/ HEAD > /tmp/amaterasu.zip')
@@ -37,7 +38,7 @@ def run_migrations():
             run('python manage.py migrate')
             
 def restart_supervisord():
-    run('supervisorctl restart amaterasu')
+    sudo('supervisorctl restart amaterasu')
         
 def deploy():
     copy_files()
