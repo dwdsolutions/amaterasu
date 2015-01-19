@@ -208,8 +208,8 @@ AWS_HEADERS = {
 
 AWS_IS_GZIPPED = True
 
-#from S3 import CallingFormat
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+# from S3 import CallingFormat
+# AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
