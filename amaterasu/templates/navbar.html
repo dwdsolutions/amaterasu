@@ -7,12 +7,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="{% url index %}">Amaterasu Control Panel</a>
+                    <a class="brand" href="{% url 'index' %}">Amaterasu Control Panel</a>
                     {% if user.is_authenticated %}
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li{% if index_active %} class="active"{% endif %}><a href="{% url index %}">{% trans "Home" %}</a></li>
-                            <li{% if hosting_active %} class="active"{% endif %}><a href="{% url hosting-index %}">{% trans "Hosting" %}</a></li>
+                            <li{% if index_active %} class="active"{% endif %}><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+                            <li{% if hosting_active %} class="active"{% endif %}><a href="{% url 'hosting-index' %}">{% trans "Hosting" %}</a></li>
                             <li{% if active %} class="active"{% endif %}><a href="#domains">{% trans "Domains" %}</a></li>
                             <li{% if dns_active %} class="active"{% endif %}><a href="#">{% trans "DNS" %}</a></li>
                         </ul>
@@ -23,9 +23,9 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="{% url profile user.id %}">{% trans "Profile" %}</a></li>
+                                  <li><a href="{% url 'profile' user.id %}">{% trans "Profile" %}</a></li>
                                   <li class="divider"></li>
-                                  <li><a href="{% url auth_logout %}">{% trans "Sign Out" %}</a></li>
+                                  <li><a href="{% url 'auth_logout' %}">{% trans "Sign Out" %}</a></li>
                                 </ul>
                             </li>
                         </ul>
