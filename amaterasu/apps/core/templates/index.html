@@ -6,7 +6,7 @@
     <div class="row-fluid">
         <div class="span6">
             <h2>My Domains</h2>
-            <a class="btn btn-primary" href="{% url add-domain %}">Add Domain</a>
+            <a class="btn btn-primary" href="{% url 'add-domain' %}">Add Domain</a>
             <a class="btn btn-primary" href="#">Register Domain</a>
             <table class="table table-condensed">
                 <thead>
@@ -21,9 +21,9 @@
                             <tr>
                                 <td>{{ domain }}</td>
                                 <td>
-                                    <a href="{% url edit-domain domain.id %}" class="btn btn-mini">{% trans "Edit" %}</a>
-                                    <a href="{% url email-index domain.id %}" class="btn btn-mini">{% trans "Emails" %}</a>
-                                    <a href="{% url dns-index domain.id %}" class="btn btn-mini">{% trans "DNS" %}</a>
+                                    <a href="{% url 'edit-domain' domain.id %}" class="btn btn-mini">{% trans "Edit" %}</a>
+                                    <a href="{% url 'email-index' domain.id %}" class="btn btn-mini">{% trans "Emails" %}</a>
+                                    <a href="{% url 'dns-index' domain.id %}" class="btn btn-mini">{% trans "DNS" %}</a>
                                     <a href="#" class="btn btn-mini">{% trans "Databases" %}</a>
                                 </td>
                             </tr>

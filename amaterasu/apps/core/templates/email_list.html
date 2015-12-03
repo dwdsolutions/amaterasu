@@ -4,7 +4,7 @@
 <div class="span10 offset1">
     <div class="row-fluid">
         <p>
-            <a href="{% url email-add domain_id %}" class="btn btn-primary">New</a>
+            <a href="{% url 'email-add' domain_id %}" class="btn btn-primary">New</a>
         </p>
         <table class="table table-bordered">
             <thead>
@@ -30,9 +30,9 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a href="{% url email-edit domain_id mailbox.id %}" class="btn btn-mini">Edit</a>
-                            <a href="{% url email-enable domain_id mailbox.id %}" class="btn btn-mini btn-info">Enable</a>
-                            <a href="{% url email-disable domain_id mailbox.id %}" class="btn btn-mini btn-danger">Disable</a>
+                            <a href="{% url 'email-edit' domain_id mailbox.id %}" class="btn btn-mini">Edit</a>
+                            <a href="{% url 'email-enable' domain_id mailbox.id %}" class="btn btn-mini btn-info">Enable</a>
+                            <a href="{% url 'email-disable' domain_id mailbox.id %}" class="btn btn-mini btn-danger">Disable</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -42,10 +42,10 @@
         {% if is_paginated %}
             <ul class="pager">
                 {% if page_obj.has_previous %}
-                    <li class="previous"><a href="{% url email-index domain_id %}?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    <li class="previous"><a href="{% url 'email-index' domain_id %}?page={{ page_obj.previous_page_number }}">Previous</a></li>
                 {% endif %}
                 {% if page_obj.has_next %}
-                    <li class="next"><a href="{% url email-index domain_id %}?page={{ page_obj.next_page_number }}">Next</a></li>
+                    <li class="next"><a href="{% url 'email-index' domain_id %}?page={{ page_obj.next_page_number }}">Next</a></li>
                 {% endif %}
             </ul>
         {% endif %}
