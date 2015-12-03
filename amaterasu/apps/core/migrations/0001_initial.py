@@ -17,7 +17,7 @@ class Migration(SchemaMigration):
             ('maildir', self.gf('django.db.models.fields.CharField')(max_length=150, blank=True)),
             ('quota', self.gf('django.db.models.fields.DecimalField')(default=0, max_digits=10, decimal_places=2)),
             ('local_part', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-            ('domain', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
+            ('domain', self.gf('django.db.models.fields.IntegerField')(max_length=100, blank=True)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('active', self.gf('django.db.models.fields.BooleanField')(default=True)),
