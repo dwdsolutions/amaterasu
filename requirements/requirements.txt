@@ -7,12 +7,11 @@ billiard==2.7.3.10
 boto==2.29.1
 celery==3.0.1
 coverage==3.7.1
-distribute==0.6.19
 django-celery==3.0.1
 django-debug-toolbar==1.2.1
 django-devserver==0.8.0
 django-mockups==0.4.8
--e hg+https://bitbucket.org/darkness51/django-storages@df85df82ef5b8bee473847171e4dd47e2188d4b3#egg=django_storages-dev
+django-storages==1.1.8
 gunicorn==0.14.5
 hashlib==20081119
 kombu==2.2.6
@@ -20,6 +19,7 @@ mock==1.0.1
 mockito==0.5.2
 nodeenv==0.9.4
 passlib==1.6
+psycopg2==2.5.4
 pycrypto==2.5
 python-dateutil==1.5
 raven==3.2.1
