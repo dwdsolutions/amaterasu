@@ -7,7 +7,7 @@ boto==2.29.1
 celery==3.0.1
 coverage==3.7.1
 django-celery==3.0.1
-django-debug-toolbar==1.2.1
+django-debug-toolbar==1.11.1
 django-devserver==0.8.0
 django-mockups==0.4.8
 django-storages==1.1.8
