@@ -4,7 +4,7 @@ amqplib==1.0.2
 anyjson==0.3.3
 billiard==2.7.3.10
 boto==2.29.1
-celery==3.0.1
+celery==5.2.2
 coverage==3.7.1
 django-celery==3.0.1
 django-debug-toolbar==1.2.1
